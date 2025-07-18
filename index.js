@@ -75,6 +75,7 @@ const PORT = process.env.PORT || 6022;
 app.use("/api/auth", authRoutes);
 
 
+
 app.listen(PORT,()=>{
     console.log(`Server is Running http://${PORT}`)
 })
