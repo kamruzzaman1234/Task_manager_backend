@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
 const authRoutes = require('./routes/authRoutes');
+const useRoutes = require('./routes/userRoutes');
 
 const PORT = process.env.PORT || 6022;
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/users", useRoutes)
 
 // MongoDB Connect
 const uri = `mongodb+srv://${process.env.DB_USER_TASK}:${process.env.DB_USER_PASS}@cluster0.7olulz0.mongodb.net/smart-task-manager?retryWrites=true&w=majority&appName=Cluster0`;
