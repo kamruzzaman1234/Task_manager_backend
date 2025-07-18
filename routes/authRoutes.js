@@ -6,6 +6,15 @@ const router = express.Router()
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/profile', protect, getProfileUser);
-router.put('/profile', protect, updateProfileUser)
+router.put('/profile', protect, updateProfileUser);
+
+router.post('/update-image',upload.single("image"),(req,res)=>{
+    if(!req.file){
+        return res.status(400).json({message: "No file Uploaded"})
+    }
+
+    const imageUrl = `${req.protocol}://${req.get("host")}/uploads ${req.file.filename}`;
+    res.status(200).json({imageUrl})
+})
 
 module.exports = router;
